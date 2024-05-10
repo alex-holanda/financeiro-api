@@ -47,26 +47,26 @@ jobs:
           alexholanda/financeiro-api:latest
           alexholanda/financeiro-api:${{ github.sha }}
 
-  CD:
-    needs: CI
-    runs-on: ubuntu-latest
-    steps:
-      - name: Mudando para o repositório de deployment
-        uses: actions/checkout@v4
-        with:
-          repository: 'alex-holanda/perfilnet-apigateway-cd'
-          ref: 'main'
-          token: ${{ secrets.G_TOKEN }}
-      - name: Modificando a imagem
-        run: |
-          cd helm
-          sed -i 's|APP_VERSION:.*|APP_VERSION: '${{ github.sha }}'|' values.yaml
-
-          git config --global user.name 'Alex Holanda'
-          git config --global user.email 'alex.holanda@outlook.com'
-
-          git add .
-          git commit -m 'Done  by Github Actions   Job changemanifest: ${{ github.sha }}'
-          git push origin main
-        env:
-          RUN_NUMBER: ${{ github.sha }}
+#  CD:
+#    needs: CI
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Mudando para o repositório de deployment
+#        uses: actions/checkout@v4
+#        with:
+#          repository: 'alex-holanda/perfilnet-apigateway-cd'
+#          ref: 'main'
+#          token: ${{ secrets.G_TOKEN }}
+#      - name: Modificando a imagem
+#        run: |
+#          cd helm
+#          sed -i 's|APP_VERSION:.*|APP_VERSION: '${{ github.sha }}'|' values.yaml
+#
+#          git config --global user.name 'Alex Holanda'
+#          git config --global user.email 'alex.holanda@outlook.com'
+#
+#          git add .
+#          git commit -m 'Done  by Github Actions   Job changemanifest: ${{ github.sha }}'
+#          git push origin main
+#        env:
+#          RUN_NUMBER: ${{ github.sha }}
