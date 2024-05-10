@@ -50,4 +50,4 @@ USER spring:spring
 
 #ENTRYPOINT exec java -javaagent:agent.jar $JAVA_OPTS -Djava.security.edg=file:/dev/./urandom -Dspring.profiles.active=prd -jar application.jar
 
-ENTRYPOINT exec java $JAVA_OPTS -Djava.security.edg=file:/dev/./urandom -Dspring.profiles.active=prd -jar application.jar
+ENTRYPOINT exec java $JAVA_OPTS -Djava.security.edg=file:/dev/./urandom -Dspring.profiles.active=dev -jar application.jar
