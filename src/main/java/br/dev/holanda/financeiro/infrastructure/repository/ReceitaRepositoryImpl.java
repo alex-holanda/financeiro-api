@@ -17,14 +17,14 @@ public class ReceitaRepositoryImpl implements ReceitaRepository {
 
     private final JdbcClient jdbcClient;
 
-    @Value("${receita.listarPorCriadoPor}")
-    private String listarPorCriadoPor;
+    @Value("${receita.listarPorContabilidadeId}")
+    private String listarPorContabilidadeId;
 
     @Override
-    public List<Receita> listarPorCriadoPor(String criadoPor) {
+    public List<Receita> listarPorContabilidadeId(Long contabilidadeId) {
         return jdbcClient
-                .sql(listarPorCriadoPor)
-                .param("criadoPor", criadoPor)
+                .sql(listarPorContabilidadeId)
+                .param("contabilidadeId", contabilidadeId)
                 .query(Receita.class)
                 .list();
     }

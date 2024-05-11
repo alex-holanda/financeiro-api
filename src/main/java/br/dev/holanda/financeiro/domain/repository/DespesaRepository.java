@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface DespesaRepository {
 
-    List<Despesa> listarPorCriadoPor(String criadoPor);
+    List<Despesa> listarPorContabilidadeId(Long contabilidadeId);
 }

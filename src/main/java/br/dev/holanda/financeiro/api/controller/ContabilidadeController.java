@@ -4,8 +4,8 @@ import br.dev.holanda.financeiro.domain.model.Contabilidade;
 import br.dev.holanda.financeiro.domain.repository.ContabilidadeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,8 +18,8 @@ public class ContabilidadeController {
 
     private final ContabilidadeRepository contabilidadeRepository;
 
-    @GetMapping("{criadoPor}")
-    public ResponseEntity<List<Contabilidade>> balanco(@PathVariable String criadoPor) {
-        return ResponseEntity.ok(contabilidadeRepository.buscarPorCriadoPor(criadoPor));
+    @GetMapping
+    public ResponseEntity<List<Contabilidade>> balanco(Authentication connectedUser) {
+        return ResponseEntity.ok(contabilidadeRepository.buscarPorCriadoPor(connectedUser.getName()));
     }
 }

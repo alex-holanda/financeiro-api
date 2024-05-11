@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface ReceitaRepository {
 
-    List<Receita> listarPorCriadoPor(String criadoPor);
+    List<Receita> listarPorContabilidadeId(Long contabilidadeId);
 }

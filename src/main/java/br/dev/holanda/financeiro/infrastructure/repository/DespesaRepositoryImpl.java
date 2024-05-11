@@ -20,14 +20,14 @@ public class DespesaRepositoryImpl implements DespesaRepository {
 
     private final DespesaMapper despesaMapper;
 
-    @Value("${despesa.listar-por-criado-por}")
-    private String listarPorCriadoPor;
+    @Value("${despesa.listarPorContabilidadeId}")
+    private String listarPorContabilidadeId;
 
     @Override
-    public List<Despesa> listarPorCriadoPor(String criadoPor) {
+    public List<Despesa> listarPorContabilidadeId(Long contabilidadeId) {
         return jdbcClient
-                .sql(listarPorCriadoPor)
-                .param("criadoPor", criadoPor)
+                .sql(listarPorContabilidadeId)
+                .param("contabilidadeId", contabilidadeId)
                 .query(despesaMapper)
                 .list();
     }
